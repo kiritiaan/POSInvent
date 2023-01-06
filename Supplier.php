@@ -1,7 +1,6 @@
 <?php
 $page = "supplier";
 include 'site/protected.php';
-
 require_once "./Model/Spplier.php";
 
 $supp =  new Spplier();
@@ -16,7 +15,7 @@ $profile = $supp->showCustomer();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="styles/Cust.css">
+    <link rel="stylesheet" href="./styles/Cust.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
@@ -28,12 +27,13 @@ $profile = $supp->showCustomer();
 </head>
 
 <body>
+
     <?php include 'site/hamburger.php'?>
     <?php include 'site/sidebar.php' ?>
 
     <div class="red">
 
-        <section class="con">
+        <section id="con" style="width:85%;">
             <h2>SUPPLIER</h2>
             <div>
 
@@ -41,12 +41,13 @@ $profile = $supp->showCustomer();
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Company</th>
                             <th>Name</th>
-                            <th>LastName</th>
+                            <th>Lastname</th>
                             <th>Address</th>
-                            <th> Email</th>
                             <th>PhoneNumber</th>
-                            <th></th>
+                            <th>Email</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,20 +55,18 @@ $profile = $supp->showCustomer();
                             <tr>
 
                                 <td><?php echo $SUPPLIER_ID ?></td>
+                                <td><?php echo $SUPPLIER_COMPANY ?></td>
                                 <td><?php echo $SUPPLIER_FNAME ?></td>
                                 <td><?php echo $SUPPLIER_LNAME ?></td>
                                 <td><?php echo $SUPPLIER_ADDRESS ?></td>
-                                <td><?php echo $SUPPLIER_EMAIL ?></td>
                                 <td><?php echo $SUPPLIER_PHONENUM ?></td>
+                                <td><?php echo $SUPPLIER_EMAIL ?></td>
                                 <td class="butt">
                                     <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="getId(<?php echo $SUPPLIER_ID ?>)"><i class="fa-regular fa-pen-to-square"></i></a></i>
 
                                     <a href="" data-bs-toggle="modal" data-bs-target="#View">
                                         <i class="fa-sharp fa-solid fa-eye-slash" onclick="viewSingle(<?php echo $SUPPLIER_ID ?>)"></i>
                                     </a>
-
-                                    <a href=""><i class="fa-solid fa-trash" onclick="deleteOne(<?php echo $SUPPLIER_ID ?>)"></i></a>
-
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -80,7 +79,7 @@ $profile = $supp->showCustomer();
 
                     <div id="addBtn">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <i class="fa-solid fa-plus"></i>ADD CUSTOMER
+                            <i class="fa-solid fa-plus"></i>ADD SUPPLIER
                         </button>
                     </div>
 
@@ -89,7 +88,7 @@ $profile = $supp->showCustomer();
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">ADD CUSTOMER</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">ADD SUPPLIER</h1>
 
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>

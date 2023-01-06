@@ -7,7 +7,6 @@ $cust = new Cstomer();
 $profile = $cust->showCustomer();
 
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -20,6 +19,7 @@ $profile = $cust->showCustomer();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.5.0/css/select.bootstrap5.min.css">
+
     <?php
     require_once "../FinalProject/styles/stylish.php";
     ?>
@@ -30,9 +30,11 @@ $profile = $cust->showCustomer();
     <?php include 'site/hamburger.php'?>
     <?php include 'site/sidebar.php'?>
 
+
+
     <div class="red">
 
-        <section class="con">
+        <section class="con" style="width:85%;">
             <h2>CUSTOMER</h2>
             <div>
 
@@ -45,7 +47,7 @@ $profile = $cust->showCustomer();
                             <th>Address</th>
                             <th> Email</th>
                             <th>PhoneNumber</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,20 +98,19 @@ $profile = $cust->showCustomer();
 
                                 <div class="modal-body">
                                     <div class="mb-3">
-
-                                        <input type="text" class="form-control" placeholder="Name" id="Fname" name="name">
+                                        <input type="text" class="form-control" placeholder="Name" id="Fname" name="name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="Lastname" id="Lname" name="lastname">
+                                        <input type="text" class="form-control" placeholder="Lastname" id="Lname" name="lastname" required>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="number" class="form-control" placeholder="Phone number" id="Pnum" name="phone">
+                                        <input type="number" class="form-control" placeholder="Phone number" id="Pnum" name="phone" required>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="email" class="form-control" placeholder="Email" id="email" name="email">
+                                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="Address" id="address" name="address">
+                                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

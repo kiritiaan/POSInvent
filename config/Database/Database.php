@@ -4,7 +4,7 @@ class Database
     private $server = "localhost";
     private $user = "root";
     private $pass = "";
-    private $dbname = "inventorydb";
+    private $dbname = "projectmotor";
     private $conn;
 
 

@@ -17,7 +17,7 @@ class Stff extends Database
     public $id;
     public $Username;
     public $password;
-    public $role = 2;
+    public $role = 'member';
 
 
     public function inserted()

@@ -14,7 +14,7 @@ $profile = $staff->showCustomer();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Staff - AAR9SPEED</title>
+    <title>Bootstrap demo</title>
     <link rel="stylesheet" href="styles/Cust.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
@@ -28,39 +28,40 @@ $profile = $staff->showCustomer();
 
 <body>
 
+
+
     <?php include 'site/hamburger.php'?>
     <?php include 'site/sidebar.php'?>
 
     <div class="red">
 
-        <section class="con">
+        <section class="con" style=" width:85%;">
             <h2>STAFF</h2>
             <div>
 
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Username</th>
+
                             <th>Name</th>
                             <th>LastName</th>
                             <th>Address</th>
-                            <th> Email</th>
                             <th>PhoneNumber</th>
-                            <th></th>
+                            <th>Role</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($profile as $value) : extract($value) ?>
                             <tr>
 
-                                <td><?php echo $STAFF_ID ?></td>
-                                <td><?php echo $STAFF_USER ?></td>
+
+
                                 <td><?php echo $STAFF_FNAME ?></td>
                                 <td><?php echo $STAFF_LNAME ?></td>
                                 <td><?php echo $STAFF_ADDRESS ?></td>
-                                <td><?php echo $STAFF_EMAIL ?></td>
                                 <td><?php echo $STAFF_PHONENUM ?></td>
+                                <td class=" text-danger text-center text-uppercase text-bold"><?php echo $STAFF_ROLE ?></td>
                                 <td class="butt">
                                     <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="getId(<?php echo $STAFF_ID ?>)"><i class="fa-regular fa-pen-to-square"></i></a></i>
 
@@ -98,15 +99,8 @@ $profile = $staff->showCustomer();
 
 
                                 <div class="modal-body">
-                                    <div class="mb-3">
 
-                                        <input type="text" class="form-control" placeholder="Username" id="User" name="name">
-                                    </div>
-                                    <div class="mb-3">
-
-                                        <input type="password" class="form-control" placeholder="Password" id="Pass" name="name">
-                                    </div>
-                                    <div class="mb-3">
+                                    <div class=" mb-3">
 
                                         <input type="text" class="form-control" placeholder="Name" id="Fname" name="name">
                                     </div>
@@ -122,6 +116,19 @@ $profile = $staff->showCustomer();
                                     <div class="mb-3">
                                         <input type="text" class="form-control" placeholder="Address" id="address" name="address">
                                     </div>
+
+                                    <div class="border border-secondary p-3">
+                                        <div class=" form-floating mb-3">
+                                            <input type="email" class="form-control" placeholder="Username" id="User" name="name">
+                                            <label for="floatingInput">Username</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" placeholder="Password" id="Pass" name="name">
+                                            <label for="floatingPassword">Password</label>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -236,20 +243,15 @@ $profile = $staff->showCustomer();
 
         function deleteOne(id) {
 
-            if(confirm("Are you sure you want to delete this data?")){
+            $.post('operation.php', {
 
-                $.post('operation.php', {
+                Cus_id: id,
+                action: 'deleteStaff'
+            }, function(data, status) {
 
-                    Cus_id: id,
-                    action: 'deleteStaff'
-                }, function(data, status) {
-
-                    location.reload();
-                    console.log(status);
-                })
-
-            }
-
+                location.reload();
+                console.log(status);
+            })
         }
 
         function getId(id) {

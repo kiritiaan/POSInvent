@@ -8,7 +8,7 @@ if(isset($_SESSION['userId'])){
 $localhost = "localhost";
 $username = "root";
 $password = "";
-$dbname = "inventorydb";
+$dbname = "projectmotor";
 $store_url = "";
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);

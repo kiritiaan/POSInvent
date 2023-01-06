@@ -6,11 +6,13 @@
     require_once "./Model/Cstomer.php";
     require_once "./Model/Spplier.php";
     require_once "./Model/Stff.php";
+    require_once "./Model/Ctegory.php";
 
 
     $cust = new Cstomer();
     $supp = new Spplier();
     $staff = new Stff();
+    $cat =  new Ctegory();
 
 
     /* CUSTOMER OPERATION */
@@ -114,7 +116,33 @@
             $staff->phone = $_POST['phone'];
             $staff->UpdateMe();
         }
+
+
+
+        /*Category function */
+
+
+        if ($_POST['action'] === 'insertCategory') {
+
+            $cat->cname = $_POST['catn'];
+            $cat->insertCat();
+        }
+
+        if ($_POST['action'] === 'deleteCat') {
+
+
+            $cat->id = $_POST['id'];
+            $cat->deleteData();
+        }
+
+        if ($_POST['action'] === 'updatingCat') {
+
+            $cat->id = $_POST['id'];
+            $cat->cname = $_POST['name'];
+            $cat->UpdateMe();
+        }
     }
+    /* ----------------------------GET METHOD-------------------------------- */
 
     if ($_GET['action'] === 'getSingle') {
 
@@ -134,26 +162,34 @@
                 <div class="modal-body">
 
                     <div class="mb-3">
-
+                        FIRSTNAME: 
                         <input type="text" class="form-control" placeholder="Name" value="' . $CUS_FNAME . '" id="fname">
                     </div>
                     <div class="mb-3">
+                         LASTNAME:
                         <input type="text" class="form-control" placeholder="Lastname" value="' . $CUS_LNAME . '" id="lname">
                     </div>
                     <div class="mb-3">
+                         ADDRESS:
                         <input type="text" class="form-control" placeholder="Phone number" value="' . $CUS_ADDRESS . '" id="add">
                     </div>
                     <div class="mb-3">
+                         EMAIL:
                         <input type="email" class="form-control" placeholder="Email" value="' . $CUS_EMAIL . '" id="emls">
                     </div>
                     <div class="mb-3">
+                         PHONE-NUM:
                         <input type="text" class="form-control" placeholder="Address" value="' . $CUS_PHONENUM . '" id="nums">
+                    </div>
+                     <div class="mb-3">
+                         ADDED DATE:
+                        <input type="text" class="form-control" placeholder="Address" value="' . $CUS_CREATED_AT . '" id="nums" disabled>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="updateME(' . $CUS_ID . ')">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="updateME(' . $CUS_ID . ')">SAVE CHANGES</button>
                 </div>
         
 
@@ -179,6 +215,8 @@
                                 <label>ADDRESS: ' . $CUS_ADDRESS . '</label>
                                 <label>EMAIL: ' . $CUS_EMAIL . '</label>
                                 <label>PHONE-NUMBER: ' . $CUS_PHONENUM . '</label>
+                                <label>DATE CREADTED: ' . $CUS_CREATED_AT . '</label>
+                                <label>DATE UPDATED: ' . $CUS_UPDATED_AT . '</label>
 
         </p>
 
@@ -208,26 +246,34 @@
                 <div class="modal-body">
 
                     <div class="mb-3">
-
+                        FIRSTNAME:
                         <input type="text" class="form-control" placeholder="Name" value="' . $SUPPLIER_FNAME . '" id="fname">
                     </div>
                     <div class="mb-3">
+                        LASTNAME:
                         <input type="text" class="form-control" placeholder="Lastname" value="' . $SUPPLIER_LNAME . '" id="lname">
                     </div>
                     <div class="mb-3">
+                        ADDRESS:
                         <input type="text" class="form-control" placeholder="Phone number" value="' . $SUPPLIER_ADDRESS . '" id="add">
                     </div>
                     <div class="mb-3">
+                        EMAIL:
                         <input type="email" class="form-control" placeholder="Email" value="' . $SUPPLIER_EMAIL . '" id="emls">
                     </div>
                     <div class="mb-3">
+                        PHONE-NUM:
                         <input type="text" class="form-control" placeholder="Address" value="' . $SUPPLIER_PHONENUM . '" id="nums">
+                    </div>
+                     <div class="mb-3">
+                        CREATED DATE:
+                        <input type="text" class="form-control" placeholder="Address" value="' . $SUPPLIER_CREATED_AT . '" id="nums" disabled>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="updateME(' . $SUPPLIER_ID . ')">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="updateME(' . $SUPPLIER_ID . ')">SAVE CHANGES</button>
                 </div>
         
 
@@ -253,6 +299,8 @@
                                 <label>ADDRESS: ' . $SUPPLIER_ADDRESS . '</label>
                                 <label>EMAIL: ' . $SUPPLIER_EMAIL . '</label>
                                 <label>PHONE-NUMBER: ' . $SUPPLIER_PHONENUM . '</label>
+                                <label>DATE ADDED: ' . $SUPPLIER_CREATED_AT . '</label>
+
 
         </p>
 
@@ -281,22 +329,30 @@
                 </div>
 
                 <div class="modal-body">
-
+                    
                     <div class="mb-3">
-
+                         FIRSTNAME:
                         <input type="text" class="form-control" placeholder="Name" value="' . $STAFF_FNAME . '" id="fname">
                     </div>
                     <div class="mb-3">
+                         LASTNAME:
                         <input type="text" class="form-control" placeholder="Lastname" value="' . $STAFF_LNAME . '" id="lname">
                     </div>
                     <div class="mb-3">
+                         ADDRESS:
                         <input type="text" class="form-control" placeholder="Phone number" value="' . $STAFF_ADDRESS . '" id="add">
                     </div>
                     <div class="mb-3">
+                         EMAIL:
                         <input type="email" class="form-control" placeholder="Email" value="' . $STAFF_EMAIL . '" id="emls">
                     </div>
                     <div class="mb-3">
+                        PHONE-NUM:
                         <input type="text" class="form-control" placeholder="Address" value="' . $STAFF_PHONENUM . '" id="nums">
+                    </div>
+                     <div class="mb-3">
+                        ADDED DATE:
+                        <input type="text" class="form-control" placeholder="Address" value="' . $STAFF_CREATED_AT . '" disabled>
                     </div>
 
                 </div>
@@ -335,6 +391,68 @@
 
         echo $div;
     }
+
+
+
+    /* CATEGORY OPERATION */
+
+    if ($_GET['action'] === 'getSingleCat') {
+
+
+        $cat->id = $_GET['Cus_id'];
+        $prof = $cat->getSingle();
+
+        extract($prof);
+
+        $div = '
+
+        <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">UPDATE CUSTOMER</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" placeholder="Name" value="' . $CATEGORY_NAME . '" id="name">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateME(' . $CATEGORY_ID . ')">Save changes</button>
+                </div>
+        
+
+        ';
+
+        echo $div;
+    }
+
+    if ($_GET['action'] === 'viewSingleCat') {
+
+
+        $cat->id = $_GET['id'];
+        $prof = $cat->getSingle();
+
+        extract($prof);
+
+        $div = '
+
+
+          <p class="card-text" style="display: flex; justify-content: center; align-items: center; gap:10px; flex-direction: column;">
+                                <label>CATEGORY: ' . $CATEGORY_NAME . '</label>
+                                
+
+        </p>
+
+        ';
+
+        echo $div;
+    }
+
 
 
 

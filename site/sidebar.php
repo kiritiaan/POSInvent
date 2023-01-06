@@ -25,6 +25,7 @@
                 </a>
                 <a href="Customer.php" class="list-group-item list-group-item-action <?php if ($page == 'customer') echo 'active'; else echo 'sides'?>"><i class="fa-sharp fa-solid fa-users"></i>CUSTOMER</a></li></a>
                 <a href="Staff.php" class="list-group-item list-group-item-action <?php if ($page == 'staff') echo 'active'; else echo 'sides'?>"><i class="fa-solid fa-user-plus"></i>STAFF</a></li></a>
+                <a href="Category.php" class="list-group-item list-group-item-action <?php if ($page == 'category') echo 'active'; else echo 'sides'?>"><i class="fa-solid fa-box-open"></i>CATEGORY</a></li></a>
                 <a href="Product.php" class="list-group-item list-group-item-action <?php if ($page == 'product') echo 'active'; else echo 'sides'?>"><i class="fa-sharp fa-solid fa-cart-shopping"></i>PRODUCT</a>
                 <a href="Invoice.php" class="list-group-item list-group-item-action <?php if ($page == 'invoice') echo 'active'; else echo 'sides'?>"><i class="fa-solid fa-receipt"></i> INVOICE</a>
                 <a href="Supplier.php" class="list-group-item list-group-item-action <?php if ($page == 'supplier') echo 'active'; else echo 'sides'?>"><i class="fa-sharp fa-solid fa-user"></i>SUPPLIER</a>
